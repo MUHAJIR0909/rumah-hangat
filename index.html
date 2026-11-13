@@ -58,6 +58,18 @@ section{padding:72px 0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 20px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(47,26,41,.04),0 10px 30px -18px rgba(47,26,41,.25)}
 .card h3{margin-bottom:6px}
 .card p:last-child{margin-bottom:0}
+.checklist{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:6px 18px;box-shadow:0 10px 30px -18px rgba(47,26,41,.25)}
+.ck{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer;font-size:17px;line-height:1.5}
+.ck:last-child{border:0}
+.ck input{position:absolute;opacity:0;pointer-events:none}
+.ck .box{flex:0 0 24px;height:24px;margin-top:2px;border:2px solid var(--accent);border-radius:7px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.ck input:checked+.box{background:var(--accent)}
+.ck input:checked+.box:after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.ck input:checked~span:last-child{color:var(--pri);font-weight:600}
+.ckres{margin-top:18px;font:500 15.5px/1.55 'Poppins',sans-serif;color:var(--pri);text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;z-index:40;width:min(92vw,420px);background:var(--pri2);color:#fff;border-radius:14px;padding:14px 16px;font:500 14.5px/1.45 'Poppins',sans-serif;text-align:center;box-shadow:0 18px 40px -12px rgba(0,0,0,.5);transition:all .25s}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast b{color:var(--accent2);letter-spacing:.08em}
 .pain{display:flex;gap:14px;align-items:flex-start}
 .pain .ic{flex:0 0 38px;height:38px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center}
 .pain svg{width:19px;height:19px;stroke:var(--accent)}
@@ -120,9 +132,10 @@ footer{text-align:center;font:400 13px/1.6 'Poppins';color:var(--muted);padding:
 footer a{color:var(--pri)}
 .disc{font-size:13px;line-height:1.55;color:var(--muted)}
 .heroprice{margin:4px 0 16px;padding:16px 14px;border:1px solid rgba(243,201,192,.3);border-radius:16px;text-align:center;font-family:'Poppins',sans-serif;color:#EADBE3}
-.heroprice .hp1{display:flex;justify-content:center;align-items:baseline;gap:12px}
-.heroprice .hp1 s{font-size:16px;opacity:.65}
-.heroprice .hp1 b{font-size:32px;line-height:1;color:#fff;letter-spacing:-.02em}
+.heroprice .hp0{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2)}
+.heroprice .hpbig{font:700 46px/1.05 'Poppins',sans-serif;color:#fff;letter-spacing:-.02em;margin:6px 0 8px}
+.heroprice .hp1{font-size:14px}
+.heroprice .hp1 s{opacity:.7}
 .heroprice .hp2{margin-top:10px;font-size:14px}
 .heroprice .hcode{display:inline-block;margin-left:4px;padding:3px 10px;border:1.5px dashed var(--accent2);border-radius:8px;font-weight:700;letter-spacing:.1em;color:#fff}
 .heroprice .hp3{margin-top:8px;font-size:12.5px;color:var(--accent2)}
@@ -161,10 +174,10 @@ footer a{color:var(--pri)}
 <header class="hero" id="hero">
 <div class="wrap">
 <div class="eyebrow">Mulai malam ini · Berbasis riset</div>
-<h1>Dari perang dingin ke <em>rumah yang hangat</em> lagi, tanpa mengemis perhatian.</h1>
-<p class="sub">Bukan trik supaya dia takut kehilangan. Kenali dulu tipe cuek suamimu, lalu jalani langkah kecil yang tepat, 15 menit sehari.</p>
+<h1>Suami cuek <em>belum tentu</em> berhenti sayang. Kenali dulu tipe cueknya.</h1>
+<p class="sub">Ada 4 tipe suami cuek, dan tiap tipe butuh cara mendekat yang berbeda. Temukan tipe suamimu, lalu lakukan langkah pertamanya malam ini. Tanpa mengemis perhatian, tanpa trik.</p>
 <img class="cover" src="hero.jpg?v=judul3" width="900" height="900" alt="Paket ebook Rumah Hangat: Cairkan Suami yang Cuek, Mulai Malam Ini, beserta 4 bonus" fetchpriority="high">
-<div class="heroprice"><div class="hp1"><s>Rp276.000</s><b>Rp69.000</b></div><div class="hp2">Pakai kode voucher <span class="hcode">CINTASUAMI</span></div><div class="hp3">Khusus 20 pembeli pertama hari ini</div></div>
+<div class="heroprice"><div class="hp0">Harga hari ini</div><div class="hpbig">Rp69.000</div><div class="hp1">dari <s>Rp276.000</s> dengan kode <span class="hcode">CINTASUAMI</span></div><div class="hp3">Khusus 20 pembeli pertama hari ini · kode otomatis tersalin saat kamu klik tombol</div></div>
 <a class="btn" data-buy href="https://lynk.id/halalberdua/eojrejn5xlk9/checkout">Mulai sekarang<small>Ebook + 4 bonus, langsung dikirim ke email</small></a>
 <a class="link2" href="#isi">Lihat isi paketnya dulu ↓</a>
 <div class="trust">
@@ -178,14 +191,10 @@ footer a{color:var(--pri)}
 <!-- 2. CEK KONDISI -->
 <section>
 <div class="wrap">
-<div class="eyebrow rv">Coba jujur sebentar</div>
-<h2 class="rv">Mana yang sedang terjadi di rumahmu?</h2>
-<div class="card pain rv"><div class="ic"><svg><use href="#i-tired"/></svg></div><div><h3>Kamu yang terus berusaha</h3><p>Kamu yang menyapa duluan, bertanya duluan, minta maaf duluan. Dia? Seolah semuanya baik-baik saja.</p></div></div>
-<div class="card pain rv"><div class="ic"><svg><use href="#i-chat"/></svg></div><div><h3>Ditanya panjang, dijawab "hmm"</h3><p>Kamu cerita, dia mengangguk sambil menatap layar. Kamu mengajak bicara serius, dia bilang capek, nanti saja.</p></div></div>
-<div class="card pain rv"><div class="ic"><svg><use href="#i-bed"/></svg></div><div><h3>Serumah, tapi seperti teman kos</h3><p>Makan bersama tanpa obrolan. Tidur di kasur yang sama, tapi rasanya ada jarak yang tidak terlihat.</p></div></div>
-<div class="card pain rv"><div class="ic"><svg><use href="#i-home"/></svg></div><div><h3>Sejak ada anak, kalian bukan "kita" lagi</h3><p>Kamu jadi ibu, dia jadi tamu. Kapan terakhir kalian ngobrol berdua tanpa membahas anak atau tagihan?</p></div></div>
-<div class="card pain rv"><div class="ic"><svg><use href="#i-moon"/></svg></div><div><h3>Pikiran yang datang malam-malam</h3><p>"Apa dia sudah tidak sayang?" "Apa ada orang lain?" Pertanyaan yang tidak berani kamu ucapkan, bahkan pada dirimu sendiri.</p></div></div>
-<p class="rv" style="margin-top:24px">Kalau ada satu saja yang membuatmu mengangguk, berhenti sebentar dan dengar ini:</p>
+<div class="eyebrow rv">Cek dulu, 30 detik saja</div>
+<h2 class="rv">Centang yang sedang terjadi di rumahmu</h2>
+<div class="checklist rv" id="cek"><label class="ck"><input type="checkbox"><span class="box"></span><span>Kamu selalu yang menyapa, bertanya, dan minta maaf duluan.</span></label><label class="ck"><input type="checkbox"><span class="box"></span><span>Kamu cerita panjang, dia menjawab "hmm" sambil menatap HP.</span></label><label class="ck"><input type="checkbox"><span class="box"></span><span>Serumah dan sekasur, tapi rasanya seperti teman kos.</span></label><label class="ck"><input type="checkbox"><span class="box"></span><span>Sejak ada anak, obrolan kalian hanya soal anak dan tagihan.</span></label><label class="ck"><input type="checkbox"><span class="box"></span><span>Ajakan bicara serius selalu dijawab "nanti saja, capek".</span></label><label class="ck"><input type="checkbox"><span class="box"></span><span>Kamu mulai malas cerita karena lelah tidak didengar.</span></label><label class="ck"><input type="checkbox"><span class="box"></span><span>Malam-malam kamu bertanya dalam hati: "Apa dia masih sayang?"</span></label></div>
+<p class="ckres rv" id="ckres">Centang yang terasa akrab. Tidak ada yang melihat jawabanmu.</p>
 <div class="quote rv">Kamu bukan istri yang gagal. Kamu hanya diberi resep yang salah.</div>
 </div>
 </section>
@@ -272,14 +281,14 @@ footer a{color:var(--pri)}
 <div class="eyebrow rv" id="isi">Intip isinya</div>
 <h2 class="rv">Apa saja yang akan kamu pelajari</h2>
 <div class="card rv">
-<div class="chap"><div class="n">Bab 1</div><h3>Yang paling kamu takutkan</h3><p>Lingkaran kejar-menjauh dan 3 kebiasaan yang tanpa sadar memperparah. Ada checklist untuk mengenali yang paling sering kamu lakukan.</p></div>
-<div class="chap"><div class="n">Bab 2</div><h3>Kuis: kenali tipe cuek suamimu</h3><p>10 pertanyaan, hasilnya menentukan jalurmu. Termasuk tanda bahaya yang perlu bantuan profesional.</p></div>
-<div class="chap"><div class="n">Bab 3</div><h3>Mulai malam ini</h3><p>3 langkah untuk 24 jam pertama dan kalimat pembuka siap ucap untuk tiap tipe.</p></div>
-<div class="chap"><div class="n">Langkah 1 · Hari 1–3</div><h3>Berhenti mengejar</h3><p>Aturan "Satu kali, lalu lepaskan" dan lembar catatan pola cueknya.</p></div>
-<div class="chap"><div class="n">Langkah 2 · Hari 4–9</div><h3>Redakan</h3><p>Pembuka 3 bagian untuk menyampaikan keluhan tanpa memicu pertahanan dirinya, plus kalimat untuk minta jeda saat emosi naik.</p></div>
-<div class="chap"><div class="n">Langkah 3 · Hari 10–16</div><h3>Sambung</h3><p>Cara menyambut "kode kecil", terima kasih yang spesifik, dan ritual 10 menit berdua.</p></div>
-<div class="chap"><div class="n">Langkah 4 · Hari 17–23</div><h3>Pulihkan</h3><p>Lima aturan aman untuk membicarakan satu masalah lama sampai selesai.</p></div>
-<div class="chap"><div class="n">Langkah 5 · Hari 24–30</div><h3>Jaga</h3><p>Obrolan teras 15 menit seminggu dan rencana kalau suasana dingin lagi.</p></div>
+<div class="chap"><div class="n">Bab 1</div><h3>Kenapa makin dikejar, dia makin diam</h3><p>Lingkaran kejar-menjauh dan 3 kebiasaan yang tanpa sadar memperparah. Ada checklist untuk mengenali yang paling sering kamu lakukan.</p></div>
+<div class="chap"><div class="n">Bab 2</div><h3>Kuis: suamimu cuek tipe yang mana?</h3><p>10 pertanyaan, hasilnya menentukan jalurmu. Termasuk tanda bahaya yang perlu bantuan profesional.</p></div>
+<div class="chap"><div class="n">Bab 3</div><h3>Malam ini: 3 langkah pertama yang tepat untuk tipenya</h3><p>3 langkah untuk 24 jam pertama dan kalimat pembuka siap ucap untuk tiap tipe.</p></div>
+<div class="chap"><div class="n">Langkah 1 · Hari 1–3</div><h3>Berhenti mengejar, beri dia ruang untuk mendekat</h3><p>Aturan "Satu kali, lalu lepaskan" dan lembar catatan pola cueknya.</p></div>
+<div class="chap"><div class="n">Langkah 2 · Hari 4–9</div><h3>Sampaikan keluhan tanpa memicu perang baru</h3><p>Pembuka 3 bagian untuk menyampaikan keluhan tanpa memicu pertahanan dirinya, plus kalimat untuk minta jeda saat emosi naik.</p></div>
+<div class="chap"><div class="n">Langkah 3 · Hari 10–16</div><h3>"Kode kecil" yang membuat kalian dekat lagi</h3><p>Cara menyambut "kode kecil", terima kasih yang spesifik, dan ritual 10 menit berdua.</p></div>
+<div class="chap"><div class="n">Langkah 4 · Hari 17–23</div><h3>Selesaikan satu masalah lama tanpa bertengkar</h3><p>Lima aturan aman untuk membicarakan satu masalah lama sampai selesai.</p></div>
+<div class="chap"><div class="n">Langkah 5 · Hari 24–30</div><h3>Supaya rumah tidak dingin lagi</h3><p>Obrolan teras 15 menit seminggu dan rencana kalau suasana dingin lagi.</p></div>
 <div class="chap"><div class="n">Penutup</div><h3>Hasilmu dan kapan harus minta bantuan</h3><p>Skor hari 1 dan hari 30, daftar layanan resmi, dan daftar 13 sumber.</p></div>
 </div>
 <h3 class="rv" style="margin-top:28px">Contoh halaman di dalamnya</h3>
@@ -376,7 +385,7 @@ footer a{color:var(--pri)}
 <div class="eyebrow" style="justify-content:center;color:var(--accent2)">Harga spesial hari ini</div>
 <div style="text-decoration:line-through;opacity:.7;font:500 22px 'Poppins'">Rp276.000</div>
 <div class="big">Rp69.000</div>
-<p>Masukkan kode voucher ini di halaman checkout:</p>
+<p>Kode voucher ini otomatis tersalin saat kamu klik tombol di bawah. Tinggal tempel di kolom <strong style="color:#fff">Promo Code</strong> saat checkout:</p>
 <div class="copy"><div class="code">CINTASUAMI</div><button type="button" class="copybtn" data-copy="CINTASUAMI">Salin kode</button></div>
 <p><strong style="color:#fff">Khusus 20 pembeli pertama hari ini.</strong> Setelah kuota habis, harga kembali Rp276.000.</p>
 <a class="btn" data-buy href="https://lynk.id/halalberdua/eojrejn5xlk9/checkout" style="margin-top:18px">Ya, aku mau harga spesialnya<small>Paket lengkap dikirim ke email setelah pembayaran</small></a>
@@ -428,7 +437,7 @@ footer a{color:var(--pri)}
 <details class="rv"><summary>Apakah suami harus ikut membaca?</summary><p>Tidak. Program ini dirancang untuk dijalani istri sendiri. Suamimu tidak perlu tahu atau dibujuk ikut.</p></details>
 <details class="rv"><summary>Apakah ini berisi trik untuk mengendalikan suami?</summary><p>Bukan. Isinya cara berkomunikasi dan kebiasaan kecil yang membangun rasa aman dan kedekatan, berdasarkan riset hubungan yang sumbernya kami cantumkan.</p></details>
 <details class="rv"><summary>Bagaimana kalau ada kekerasan atau perselingkuhan?</summary><p>Program ini bukan untuk kondisi itu. Utamakan keselamatanmu dan hubungi bantuan profesional. Bonus 4 berisi daftar layanan resmi yang bisa kamu hubungi.</p></details>
-<details class="rv"><summary>Cara memakai voucher CINTASUAMI?</summary><p>Di halaman checkout Lynk.id, masukkan kode CINTASUAMI di kolom voucher sebelum membayar. Total berubah dari Rp276.000 menjadi Rp69.000. Kode berlaku untuk 20 pembeli pertama setiap hari; kalau kuota hari ini sudah habis, kodenya tidak bisa dipakai dan harga kembali Rp276.000.</p></details>
+<details class="rv"><summary>Cara memakai voucher CINTASUAMI?</summary><p>Saat kamu klik tombol beli, kode CINTASUAMI otomatis tersalin. Di halaman checkout Lynk.id, tempel kode itu di kolom Promo Code sebelum membayar. Total berubah dari Rp276.000 menjadi Rp69.000. Kode berlaku untuk 20 pembeli pertama setiap hari; kalau kuota hari ini sudah habis, kodenya tidak bisa dipakai dan harga kembali Rp276.000.</p></details>
 <details class="rv"><summary>Email tidak masuk atau salah ketik email?</summary><p>Cek folder Spam atau Promosi dulu. Kalau tetap tidak ada, hubungi admin lewat WhatsApp dengan bukti pembayaran, kami kirim ulang.</p></details>
 </div>
 </section>
@@ -444,7 +453,7 @@ footer a{color:var(--pri)}
 
 <footer>
 <p class="disc">Ebook ini adalah panduan kebiasaan dan komunikasi, bukan pengganti konselor pernikahan, psikolog, atau bantuan hukum. Hasil setiap rumah tangga berbeda. Nama peneliti dan lembaga yang dirujuk di dalam ebook tidak berafiliasi dengan dan tidak mendukung produk ini. Jika kamu mengalami kekerasan, hubungi SAPA 129 (telepon 129 atau WhatsApp 08111-129-129).</p>
-<p>Pertanyaan? <a href="https://wa.me/6282218365422?text=Halo%20admin%2C%20saya%20mau%20tanya%20soal%20Rumah%20Hangat%2030%20Hari">WhatsApp admin</a></p>
+<p>Pertanyaan? <a href="https://wa.me/6282218365422?text=Halo%20admin%2C%20saya%20mau%20tanya%20soal%20Rumah%20Hangat">WhatsApp admin</a></p>
 <p>© halalberdua</p>
 </footer>
 
@@ -453,6 +462,7 @@ footer a{color:var(--pri)}
 <a class="btn" data-buy href="https://lynk.id/halalberdua/eojrejn5xlk9/checkout">Mulai sekarang</a>
 </div>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (function(){
 var io='IntersectionObserver' in window;
@@ -461,7 +471,16 @@ if(io){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.i
 var s=document.getElementById('sticky'),h=document.getElementById('hero');
 if(io){new IntersectionObserver(function(es){s.classList.toggle('on',!es[0].isIntersecting)}).observe(h)}else{s.classList.add('on')}
 document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){var t=b.getAttribute('data-copy');var done=function(){b.textContent='Tersalin ✓';setTimeout(function(){b.textContent='Salin kode'},2000)};var fb=function(){var i=document.createElement('textarea');i.value=t;document.body.appendChild(i);i.select();try{document.execCommand('copy');done()}catch(e){b.textContent=t}document.body.removeChild(i)};try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}})});
-document.querySelectorAll('[data-buy]').forEach(function(b){b.addEventListener('click',function(){if(window.fbq)fbq('track','InitiateCheckout',{content_name:'Rumah Hangat',value:276000,currency:'IDR'})})});
+var CODE='CINTASUAMI',toast=document.getElementById('toast');
+function copyCode(){var ok=false;try{if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(CODE);ok=true}}catch(e){}
+try{var i=document.createElement('textarea');i.value=CODE;i.setAttribute('readonly','');i.style.position='fixed';i.style.opacity='0';document.body.appendChild(i);i.select();ok=document.execCommand('copy')||ok;document.body.removeChild(i)}catch(e){}return ok}
+document.querySelectorAll('[data-buy]').forEach(function(b){b.addEventListener('click',function(ev){if(window.fbq)fbq('track','InitiateCheckout',{content_name:'Rumah Hangat',value:69000,currency:'IDR'});
+var ok=copyCode();ev.preventDefault();var href=b.href;
+toast.innerHTML=ok?'Kode <b>'+CODE+'</b> sudah tersalin.<br>Tempel di kolom <b>Promo Code</b> saat checkout.':'Ingat kodenya: <b>'+CODE+'</b><br>Ketik di kolom <b>Promo Code</b> saat checkout.';
+toast.classList.add('on');setTimeout(function(){location.href=href},1600)})});
+var cks=document.querySelectorAll('#cek input'),res=document.getElementById('ckres');
+cks.forEach(function(c){c.addEventListener('change',function(){var n=0;cks.forEach(function(x){if(x.checked)n++});
+res.textContent=n===0?'Centang yang terasa akrab. Tidak ada yang melihat jawabanmu.':n<3?'Kamu mencentang '+n+'. Kalau satu saja terasa akrab, panduan ini dibuat untukmu.':'Kamu mencentang '+n+' dari 7. Kamu tidak sendirian, dan ini bisa mulai diubah malam ini.'})});
 })();
 </script>
 </body>
