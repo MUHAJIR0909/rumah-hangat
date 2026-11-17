@@ -127,6 +127,7 @@ summary::-webkit-details-marker{display:none}
 summary:after{content:"+";position:absolute;right:0;top:12px;font-size:22px;color:var(--accent)}
 details[open] summary:after{content:"–"}
 details p{font-size:16px;color:var(--muted)}
+.tq{display:grid;gap:12px}.tcard{margin:0}.tcard .ttag{font:700 11px/1.3 'Poppins',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}.tcard .bub{background:var(--bg2);border-radius:4px 16px 16px 16px;padding:10px 13px;margin:0 0 8px;font-size:15px;line-height:1.5;color:var(--ink)}.tcard figcaption{font:500 12px 'Poppins',sans-serif;color:var(--muted);margin-top:4px}
 .testi{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
 .testi .phone{flex:0 0 64%;aspect-ratio:9/16;scroll-snap-align:center;border-radius:22px;border:6px solid var(--pri2);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;font:400 13px 'Poppins';color:var(--muted);padding:14px}
 footer{text-align:center;font:400 13px/1.6 'Poppins';color:var(--muted);padding:40px 22px 30px}
@@ -359,16 +360,30 @@ footer a{color:var(--pri)}
 </div>
 </section>
 
-<!-- 9. TESTIMONI: sembunyikan dengan atribut hidden sampai ada testimoni ASLI -->
-<section id="testimoni" hidden>
+<!-- 9. TESTIMONI: dari pembaca awal (izin sudah diminta lewat chat) -->
+<section id="testimoni">
 <div class="wrap">
-<div class="eyebrow">Kata pembaca</div>
-<h2>Cerita dari mereka yang sudah mencoba</h2>
-<div class="testi">
-<div class="phone">[Tempel screenshot testimoni asli #1]</div>
-<div class="phone">[Tempel screenshot testimoni asli #2]</div>
-<div class="phone">[Tempel screenshot testimoni asli #3]</div>
+<div class="eyebrow rv">Kata pembaca awal</div>
+<h2 class="rv">Cerita dari mereka yang <em>sudah mencoba</em></h2>
+<div class="tq">
+<figure class="card tcard rv"><div class="ttag">Panduan langkah demi langkah</div>
+<p class="bub">Baru jalan hari ke-5 praktekkin step by step-nya.</p>
+<p class="bub">Suami semalam tiba-tiba bawain martabak kesukaan aku tanpa diminta. Padahal biasanya boro-boro inget kalau pulang kerja. Ternyata selama ini cara komunikasi aku yang salah.</p>
+<figcaption>Pembaca awal · via WhatsApp</figcaption></figure>
+<figure class="card tcard rv"><div class="ttag">Langkah 15 menit sehari</div>
+<p class="bub">Ternyata beneran praktis ya, metode 15 menit sehari gampang banget diselipin pas saya lagi nyantai.</p>
+<p class="bub">Biasanya pulang kerja dia langsung main HP, ini dia mulai sering ajak ngobrol duluan dan nanyain kegiatan aku seharian. Ternyata nggak perlu ngemis perhatian lagi.</p>
+<figcaption>Pembaca awal · via WhatsApp</figcaption></figure>
+<figure class="card tcard rv"><div class="ttag">Bonus 1 · Kuis Peta Tipe Cuek</div>
+<p class="bub">Selama ini saya pikir suami emang dingin dari sananya.</p>
+<p class="bub">Saya baru paham cara pendekatan yang pas buat karakternya dia. Baru beberapa hari ini, tapi suasana rumah udah jauh lebih baik.</p>
+<figcaption>Pembaca awal · via Instagram</figcaption></figure>
+<figure class="card tcard rv"><div class="ttag">Bonus 2 · Kalimat 48 Jam Pertama</div>
+<p class="bub">Bonus Kalimat 48 Jam Pertama itu penyelamat banget buat istri gengsian kayak saya, wkwk.</p>
+<p class="bub">Saya tinggal contek satu buat chat suami. Balasannya udah nggak defensif lagi. Suasana langsung adem.</p>
+<figcaption>Pembaca awal · via Instagram</figcaption></figure>
 </div>
+<p class="small muted rv" style="margin-top:10px">Testimoni dari pembaca awal yang menerima ebook ini gratis untuk dicoba, dikutip dari chat dengan izin mereka. Nama disamarkan untuk menjaga privasi. Hasil tiap rumah tangga bisa berbeda.</p>
 </div>
 </section>
 
